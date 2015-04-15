@@ -45,20 +45,49 @@ print url;
 
 response = accesstoken.get(url,{ 'Accept' => 'application/xml' });
 #print response.body;
-objArray = JSON.parse(response.body)
+#objArray = JSON.parse(response)
+#result = JSON.parse(response.body)
+#pp response;
+#sample = File.open("simple_file.json",  0"w+");
+#sample.puts(result);
+#sample.close;
 
+json = JSON.parse(response.body);
+total = json['statuses'];
 sample = File.open("simple_file.json",  "w+");
-sample.puts(response.body);
+sample.puts(json);
 sample.close;
 
-
-objArray.each do |tweet|
-  puts "Count       Username  				tweet"           
-  puts "(#{tweet.url})    #{tweet.user.screen_name} #{tweet.text}";
+count=0;
+total.each do |alerts|
+puts "#{alerts['user']['screen_name']}";
+client.follow("#{alerts['user']['screen_name']}");
+client.fav alerts;
+sleep(3);
+end
+  
+  #client.fav tweet
   #sleep(3);
   #count=count+1;
   #before following user check if its alreay in list using bollean.	
-  client.follow("#{tweet.user.screen_name}")
+  #client.follow("#{tweet.user.screen_name}")
+
+=begin
+collected_alerts = {'user' => []}
+#result['statuses'].each do |alerts|
+json['user'].each do |alerts|
+ puts collected_alerts['screen_name'] << alerts['screen_name']
+end
+
+=begin
+result.each do |tweet|
+  puts "Count       Username  				tweet"           
+  puts "(#{tweet['statuses']['user']['screen_name']})";
+  #client.fav tweet
+  #sleep(3);
+  #count=count+1;
+  #before following user check if its alreay in list using bollean.	
+  #client.follow("#{tweet.user.screen_name}")
 end
 
 =begin
