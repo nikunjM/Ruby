@@ -23,7 +23,7 @@ client.search(keyword_value, result_type: "recent").take(Integer(count_number)).
   puts "(#{count})      #{tweet.url})    #{tweet.user.screen_name}                          #{tweet.text}";
   sleep(3);
   count=count+1;
-  client.follow("#{tweet.user.screen_name}");
+  client.follow("#{tweet.user.screen_name}"); 
   #client.favorite.create("#{tweet.user.screen_name}")
   #client.favorites("#{tweet.url}");
   client.fav tweet;  
