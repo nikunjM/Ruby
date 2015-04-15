@@ -24,7 +24,7 @@ client.search(keyword_value, result_type: "recent").take(Integer(count_number)).
   sleep(3);
   count=count+1;
   client.follow("#{tweet.user.screen_name}");
-  #client.favorite.create("#{tweet.user.screen_name}")
+  #client.favorite.create("#{tweet.user.screen_name}")  
   #client.favorites("#{tweet.url}");
   client.fav tweet;  
 #client.favorites("#{tweet.id}","#{tweet.user.screen_name}",https://api.twitter.com/1.1/favorites/create.json)
